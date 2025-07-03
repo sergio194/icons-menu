@@ -17,7 +17,7 @@ window.fontAwesomeIcons = [
     // Multimedia
     'fas fa-play', 'fas fa-pause', 'fas fa-stop', 'fas fa-video', 'fas fa-music', 'fas fa-volume-up',
     'fas fa-volume-down', 'fas fa-volume-mute', 'fas fa-camera', 'fas fa-image', 'fas fa-images',
-    'fas fa-film', 'fas fa-microphone', 'fas fa-headphones',
+    'fas fa-film', 'fa-solid fa-microphone', 'fas fa-headphones',
     // Archivos y documentos
     'fas fa-file', 'fas fa-file-alt', 'fas fa-file-pdf', 'fas fa-file-word', 'fas fa-file-excel',
     'fas fa-file-powerpoint', 'fas fa-file-image', 'fas fa-file-video', 'fas fa-file-audio',

@@ -55,6 +55,7 @@ class MenuIconsPro {
         $icon_position = get_post_meta($item_id, '_menu_item_icon_position', true) ?: 'before';
         $icon_size = get_post_meta($item_id, '_menu_item_icon_size', true) ?: '16';
         $hide_label = get_post_meta($item_id, '_menu_item_hide_label', true);
+        $icon_tooltip = get_post_meta($item_id, '_menu_item_icon_tooltip', true);
         ?>
         <div class="menu-icons-pro-settings" style="margin: 10px 0; padding: 10px; border: 1px solid #ddd; background: #f9f9f9;">
             <h4><?php _e('Configuración de Icono', 'menu-icons-pro'); ?></h4>
@@ -141,6 +142,18 @@ class MenuIconsPro {
                        max="64" 
                        style="width: 80px;">
             </p>
+            
+            <p class="field-icon-tooltip">
+                <label for="edit-menu-item-icon-tooltip-<?php echo $item_id; ?>">
+                    <?php _e('Texto del tooltip:', 'menu-icons-pro'); ?>
+                </label>
+                <input type="text"
+                       id="edit-menu-item-icon-tooltip-<?php echo $item_id; ?>"
+                       name="menu-item-icon-tooltip[<?php echo $item_id; ?>]"
+                       value="<?php echo esc_attr($icon_tooltip); ?>"
+                       class="widefat"
+                       placeholder="<?php _e('Texto que aparecerá al pasar el ratón sobre el icono', 'menu-icons-pro'); ?>">
+            </p>
         </div>
         <?php
     }
@@ -184,6 +197,11 @@ class MenuIconsPro {
         } else {
             delete_post_meta($menu_item_db_id, '_menu_item_hide_label');
         }
+        if (isset($_POST['menu-item-icon-tooltip'][$menu_item_db_id])) {
+            update_post_meta($menu_item_db_id, '_menu_item_icon_tooltip', sanitize_text_field($_POST['menu-item-icon-tooltip'][$menu_item_db_id]));
+        } else {
+            delete_post_meta($menu_item_db_id, '_menu_item_icon_tooltip');
+        }
     }
     
     /**
@@ -199,6 +217,10 @@ class MenuIconsPro {
                 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css', 
                 array(), '6.0.0');
         }
+        // Tooltip CSS inline
+        add_action('wp_head', function() {
+            echo '<style>.menu-icons-pro-tooltip{visibility:hidden;opacity:0;transition:opacity 0.15s;position:absolute;z-index:9999;bottom:120%;left:50%;transform:translateX(-50%);background:#222;color:#fff;padding:5px 10px;border-radius:4px;font-size:13px;white-space:nowrap;pointer-events:none;box-shadow:0 2px 8px rgba(0,0,0,0.15);} .menu-icons-pro-icon-tooltip-wrapper:hover .menu-icons-pro-tooltip{visibility:visible;opacity:1;pointer-events:auto;} .menu-icons-pro-icon-tooltip-wrapper .menu-icons-pro-tooltip::after{content:"";position:absolute;top:100%;left:50%;transform:translateX(-50%);border-width:6px;border-style:solid;border-color:#222 transparent transparent transparent;}</style>';
+        });
     }
     
     /**
@@ -703,9 +725,13 @@ class MenuIconsPro {
             $icon_position = get_post_meta($item->ID, '_menu_item_icon_position', true) ?: 'before';
             $icon_size = get_post_meta($item->ID, '_menu_item_icon_size', true) ?: '16';
             $hide_label = get_post_meta($item->ID, '_menu_item_hide_label', true);
+            $icon_tooltip = get_post_meta($item->ID, '_menu_item_icon_tooltip', true);
             
             if ($icon_type && $icon_value) {
+                // Pasar el tooltip como variable global temporal
+                $GLOBALS['menu_icons_pro_current_tooltip'] = $icon_tooltip;
                 $item->icon_html = $this->generate_icon_html($icon_type, $icon_value, $icon_size);
+                unset($GLOBALS['menu_icons_pro_current_tooltip']);
                 $item->icon_position = $icon_position;
                 $item->hide_label = $hide_label;
             }
@@ -746,18 +772,32 @@ class MenuIconsPro {
      */
     private function generate_icon_html($icon_type, $icon_value, $icon_size) {
         $size_style = "width: " . intval($icon_size) . "px; height: " . intval($icon_size) . "px; font-size: " . intval($icon_size) . "px;";
+        $tooltip = '';
+        if (!empty($GLOBALS['menu_icons_pro_current_tooltip'])) {
+            $tooltip = $GLOBALS['menu_icons_pro_current_tooltip'];
+        }
+        $attr = '';
+        $tooltip_html = '';
+        if ($tooltip) {
+            $attr = ' aria-label="' . esc_attr($tooltip) . '"';
+            $tooltip_html = '<span class="menu-icons-pro-tooltip">' . esc_html($tooltip) . '</span>';
+        }
+        $icon_html = '';
         switch ($icon_type) {
             case 'fontawesome':
-                return "<i class='" . esc_attr($icon_value) . " menu-icon' style='" . esc_attr($size_style) . "'></i>";
+                $icon_html = "<i class='" . esc_attr($icon_value) . " menu-icon' style='" . esc_attr($size_style) . "'{$attr}></i>";
+                break;
             case 'custom':
                 if (filter_var($icon_value, FILTER_VALIDATE_URL)) {
-                    // Usar el nombre del archivo como alt por defecto
                     $alt = basename(parse_url($icon_value, PHP_URL_PATH));
-                    return "<img src='" . esc_url($icon_value) . "' class='menu-icon custom-icon' style='" . esc_attr($size_style) . "' alt='" . esc_attr($alt) . "'>";
+                    $icon_html = "<img src='" . esc_url($icon_value) . "' class='menu-icon custom-icon' style='" . esc_attr($size_style) . "' alt='" . esc_attr($alt) . "'{$attr}>";
                 }
                 break;
         }
-        return '';
+        if ($icon_html && $tooltip_html) {
+            return '<span class="menu-icons-pro-icon-tooltip-wrapper" style="position:relative;display:inline-block;">' . $icon_html . $tooltip_html . '</span>';
+        }
+        return $icon_html;
     }
     
     /**
