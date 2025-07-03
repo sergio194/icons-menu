@@ -1,0 +1,402 @@
+/* Estilos del administrador para Menu Icons Pro */
+
+.menu-icons-pro-settings {
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    margin: 10px 0;
+}
+
+.menu-icons-pro-settings h4 {
+    margin: 0 0 15px 0;
+    color: #333;
+    font-size: 14px;
+    font-weight: 600;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 8px;
+}
+
+.menu-icons-pro-settings p {
+    margin: 10px 0;
+}
+
+.menu-icons-pro-settings label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.menu-icons-pro-settings select,
+.menu-icons-pro-settings input[type="text"],
+.menu-icons-pro-settings input[type="number"] {
+    width: 100%;
+    padding: 6px 8px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 13px;
+}
+
+.menu-icons-pro-settings input[type="number"] {
+    width: 80px;
+}
+
+.menu-icons-pro-settings .description {
+    color: #666;
+    font-style: italic;
+    font-size: 12px;
+    margin-top: 5px;
+    display: block;
+}
+
+/* Iconos de vista previa en el admin */
+.menu-icons-pro-preview {
+    margin-top: 10px;
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+    display: none;
+}
+
+.menu-icons-pro-preview.show {
+    display: block;
+}
+
+.menu-icons-pro-preview .preview-icon {
+    display: inline-block;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+.menu-icons-pro-preview .preview-icon i,
+.menu-icons-pro-preview .preview-icon img {
+    vertical-align: middle;
+}
+
+/* Selector de iconos mejorado */
+.icon-picker {
+    display: none;
+    position: fixed;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    z-index: 9999;
+    max-height: 400px;
+    width: 400px;
+    padding: 15px;
+}
+
+.icon-picker.show {
+    display: block;
+}
+
+.icon-picker-header {
+    margin-bottom: 10px;
+}
+
+.icon-picker .icon-search {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.icon-picker .icon-search:focus {
+    border-color: #0073aa;
+    box-shadow: 0 0 0 1px #0073aa;
+    outline: none;
+}
+
+.icon-picker .icon-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+    max-height: 320px;
+    overflow-y: auto;
+    padding: 5px;
+}
+
+.icon-picker .icon-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 6px;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    font-size: 11px;
+    min-height: 60px;
+    justify-content: center;
+}
+
+.icon-picker .icon-option i {
+    font-size: 18px;
+    margin-bottom: 4px;
+    color: #555;
+}
+
+.icon-picker .icon-option .icon-name {
+    font-size: 9px;
+    color: #666;
+    line-height: 1.2;
+    text-align: center;
+    word-break: break-word;
+    max-width: 100%;
+}
+
+.icon-picker .icon-option:hover {
+    background: #f0f6fc !important;
+    border-color: #0073aa !important;
+    transform: translateY(-1px);
+}
+
+.icon-picker .icon-option:hover i {
+    color: #0073aa !important;
+}
+
+.icon-picker .icon-option:hover .icon-name {
+    color: #0073aa !important;
+}
+
+.icon-picker .icon-option.selected {
+    background: #0073aa;
+    color: #fff;
+    border-color: #005a87;
+}
+
+.icon-picker .icon-option.selected i,
+.icon-picker .icon-option.selected .icon-name {
+    color: #fff;
+}
+
+/* Scrollbar personalizado para el picker */
+.icon-picker .icon-grid::-webkit-scrollbar {
+    width: 6px;
+}
+
+.icon-picker .icon-grid::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.icon-picker .icon-grid::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+.icon-picker .icon-grid::-webkit-scrollbar-thumb:hover {
+    background: #a1a1a1;
+}
+
+/* Botón del picker de iconos */
+.icon-picker-btn {
+    background: #0073aa;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background-color 0.2s ease;
+}
+
+.icon-picker-btn:hover {
+    background: #005a87;
+    color: #fff;
+}
+
+.icon-picker-btn:focus {
+    box-shadow: 0 0 0 1px #0073aa;
+    outline: none;
+}
+
+/* Campo de entrada con botón */
+.field-icon-value > div {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.field-icon-value .icon-input {
+    flex: 1;
+}
+
+/* Checkbox para ocultar etiqueta */
+.field-hide-label label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+.field-hide-label input[type="checkbox"] {
+    margin: 0;
+}
+
+/* Responsive */
+@media screen and (max-width: 782px) {
+    .menu-icons-pro-settings {
+        padding: 10px;
+    }
+    
+    .menu-icons-pro-settings h4 {
+        font-size: 13px;
+    }
+    
+    .menu-icons-pro-settings select,
+    .menu-icons-pro-settings input[type="text"] {
+        font-size: 16px; /* Previene zoom en iOS */
+    }
+}
+
+/* Mejoras visuales */
+.menu-icons-pro-settings .field-icon-type select {
+    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="%23666" d="M2 0L0 2h4zm0 5L0 3h4z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 10px;
+    padding-right: 30px;
+}
+
+/* Estados de los campos */
+.menu-icons-pro-settings input:focus,
+.menu-icons-pro-settings select:focus {
+    border-color: #0073aa;
+    box-shadow: 0 0 0 1px #0073aa;
+    outline: none;
+}
+
+.menu-icons-pro-settings .error {
+    border-color: #d63638;
+    box-shadow: 0 0 0 1px #d63638;
+}
+
+/* Tooltips */
+.menu-icons-pro-tooltip {
+    position: relative;
+    cursor: help;
+}
+
+.menu-icons-pro-tooltip:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: #fff;
+    padding: 5px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 1000;
+}
+
+/* Botones de acción */
+.menu-icons-pro-actions {
+    margin-top: 10px;
+    text-align: right;
+}
+
+.menu-icons-pro-btn {
+    display: inline-block;
+    padding: 6px 12px;
+    background: #0073aa;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 3px;
+    font-size: 12px;
+    cursor: pointer;
+    border: none;
+    margin-left: 5px;
+}
+
+.menu-icons-pro-btn:hover {
+    background: #005a87;
+    color: #fff;
+}
+
+.menu-icons-pro-btn.secondary {
+    background: #666;
+}
+
+.menu-icons-pro-btn.secondary:hover {
+    background: #444;
+}
+
+/* Estilos específicos para el modal picker - MÁXIMA VISIBILIDAD */
+.menu-icon-picker-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: rgba(0,0,0,0.7) !important;
+    z-index: 999999 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.menu-icon-picker-content {
+    background: white !important;
+    border: 2px solid #0073aa !important;
+    border-radius: 12px !important;
+    padding: 25px !important;
+    box-shadow: 0 10px 50px rgba(0,0,0,0.5) !important;
+    width: 95% !important;
+    max-width: 550px !important;
+    max-height: 85vh !important;
+    overflow-y: auto !important;
+    position: relative !important;
+    margin: 0 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: none !important;
+    display: block !important;
+}
+
+/* Forzar la visibilidad de cualquier modal de iconos */
+[id^="icon-picker-"] {
+    position: fixed !important;
+    z-index: 999999 !important;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Evitar que otros CSS oculten el modal */
+body .menu-icon-picker-overlay,
+#wpwrap .menu-icon-picker-overlay,
+#wpcontent .menu-icon-picker-overlay {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+body .menu-icon-picker-content,
+#wpwrap .menu-icon-picker-content,
+#wpcontent .menu-icon-picker-content {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Asegurar que los iconos del grid sean visibles */
+.menu-icon-picker-content .icon-option {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}

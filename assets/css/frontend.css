@@ -1,0 +1,113 @@
+/* Estilos del frontend para Menu Icons Pro */
+
+.menu-icon {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
+    margin-right: 5px;
+    transition: all 0.3s ease;
+}
+
+.menu-icon.custom-icon {
+    object-fit: contain;
+}
+
+/* Ajustes para diferentes posiciones */
+.menu-item a .menu-icon {
+    margin-right: 8px;
+}
+
+.menu-item a .menu-icon:last-child {
+    margin-right: 0;
+    margin-left: 8px;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .menu-icon {
+        margin-right: 3px;
+    }
+    
+    .menu-icon:last-child {
+        margin-left: 3px;
+    }
+}
+
+/* Compatibilidad con temas comunes */
+.navbar .menu-icon,
+.nav .menu-icon,
+.main-navigation .menu-icon {
+    vertical-align: middle;
+}
+
+/* Efectos hover */
+.menu-item:hover .menu-icon {
+    transform: scale(1.1);
+}
+
+/* Alineación vertical mejorada */
+.menu-item a {
+    display: flex;
+    align-items: center;
+}
+
+.menu-item a .menu-icon {
+    margin-right: 6px;
+    flex-shrink: 0;
+}
+
+/* Para iconos que son solo iconos (sin texto) */
+.menu-item a:has(.menu-icon):empty .menu-icon,
+.menu-item a .menu-icon:only-child {
+    margin: 0;
+}
+
+/* Estilos específicos para Font Awesome */
+.menu-icon.fas,
+.menu-icon.far,
+.menu-icon.fab,
+.menu-icon.fal {
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands";
+}
+
+/* Corrección para temas que usan flexbox */
+.menu-item {
+    display: flex;
+    align-items: center;
+}
+
+.menu-item a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+/* Estilos para menús verticales */
+.vertical-menu .menu-icon,
+.sidebar-menu .menu-icon {
+    margin-right: 10px;
+}
+
+/* Accesibilidad */
+.menu-icon[aria-hidden="true"] {
+    speak: none;
+}
+
+/* Animaciones sutiles */
+.menu-icon {
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.menu-item:hover .menu-icon {
+    transform: translateY(-1px);
+}
+
+/* Compatibilidad con modo oscuro */
+@media (prefers-color-scheme: dark) {
+    .menu-icon.custom-icon {
+        filter: brightness(0.9);
+    }
+}
