@@ -1,13 +1,14 @@
 <?php
-/**
- * Plugin Name: Menu Icons Pro
- * Plugin URI: https://localhost
- * Description: Añade iconos personalizados a los elementos del menú de WordPress con una interfaz fácil de usar.
- * Version: 1.2.0
- * Author: Sergio Meyniel Pereira
- * License: GPL v2 or later
- * Text Domain: menu-icons-pro
- */
+/*
+Plugin Name: Menu Icons Pro
+Plugin URI: https://github.com/sergio194/icons-menu
+Description: Añade iconos personalizados a los elementos del menú de WordPress con una interfaz fácil de usar.
+Version: 1.0.0
+Author: Sergio Meyniel Pereira
+License: GPL v2 or later
+Text Domain: menu-icons-pro
+GitHub Plugin URI: https://github.com/sergio194/icons-menu
+*/
 
 // Prevenir acceso directo
 if (!defined('ABSPATH')) {
