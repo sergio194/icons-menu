@@ -3,7 +3,7 @@
 Plugin Name: Menu Icons Pro
 Plugin URI: https://github.com/sergio194/icons-menu
 Description: Añade iconos personalizados a los elementos del menú de WordPress con una interfaz fácil de usar.
-Version: 1.0.0
+Version: 1.1.0
 Author: Sergio Meyniel Pereira
 License: GPL v2 or later
 Text Domain: menu-icons-pro
